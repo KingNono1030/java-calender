@@ -64,30 +64,55 @@ import java.util.Scanner;
 //} // 여까지 내가 한거
 
 public class RealCalendar {
+
+	public int getMaxdays(int year, int month) {
+		int[] days = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+		if (year % 4 == 0) { // 2004 윤 / 2000 윤 / 2200 평
+			if ((year % 100 == 0) && (year % 400 != 0)) {
+			}
+			else {
+				days[1] = 29;
+			}
+		}
+		int Maxday = days[month-1]; 
+		return Maxday;
+	}
+
+	public void print(int year, int month) {
+		System.out.printf("   <<%4d년%3d월>>\n", year, month);
+		System.out.println(" SU MO TU WE TH FR SA");
+		System.out.println(" --------------------");
+	}
+
 	public static void main(String[] args) {
-		int[] days = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-		System.out.print("월을 입력하세요.\ncal> ");
 		Scanner scanner = new Scanner(System.in);
+		RealCalendar cal = new RealCalendar();
+
 		for (;;) {
+			System.out.print("년도를 입력하세요.\ncal> ");
+			int year = scanner.nextInt();
+			System.out.print("월을 입력하세요.\ncal> ");
 			int month = scanner.nextInt();
 			if ((month < 1) || (month > 12)) {
 				System.out.println("Bye~");
 				break;
 			} else {
-				System.out.println(" SU MO TU WE TH FR SA");
-				System.out.println(" --------------------");
-				for (int i = 1; i <= days[month - 1]; i++) {
+				cal.print(year, month);
+				for (int i = 1; i <= cal.getMaxdays(year, month); i++) {
 					System.out.printf("%3d", i);
-					if(i%7==0) {
+					if (i % 7 == 0) {
 						System.out.println();
 					}
 				}
 
 			}
+			System.out.println();
 		}
-		scanner.close();
 
+		scanner.close();
 	}
+
+
 
 }
 // println 특) \n이 포함되어 있어서 알아서 줄바꿈, 그 외 print 애들은 직접 입력해주어야
