@@ -3,6 +3,13 @@ package nono.calendar;
 import java.util.Scanner;
 
 public class CalendarApp {
+	
+	 private static final int[] MAX_DAYS = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	
+	public int getmaxDaysOfMonth(int month) {
+		return MAX_DAYS[month - 1];
+		
+	}
 	public static void main(String[] args) {
 //		System.out.println("일 월 화 수 목 금 토");
 //		System.out.println("--------------------");
@@ -14,12 +21,14 @@ public class CalendarApp {
 		
 		// 숫자를 입력받아 해당하는 달의 최대 일수를 출력하는 프로그램
 		System.out.println("달을 입력하세요.");
-		int [] month = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 		Scanner scanner = new Scanner(System.in);
+		CalendarApp cal = new CalendarApp();
 		int num = scanner.nextInt();
-		System.out.printf("%d월은 %d일까지 있습니다.\n", num, month[num-1]);
+		System.out.printf("%d월은 %d일까지 있습니다.\n", num, cal.getmaxDaysOfMonth(num));
 		scanner.close();
 	}
 
 }
 // 들여쓰기가 엉망이다 -> ctrl + shift + F
+// 로직, 함수(메서드)들은 엥간하면 밖으로 빼놓는 습관!
+// public, private, static, final 등의 함수 난 몰라!
