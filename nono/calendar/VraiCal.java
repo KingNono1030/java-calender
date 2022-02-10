@@ -57,11 +57,11 @@ public class VraiCal {
 		Scanner scanner = new Scanner(System.in);
 
 		for (;;) {
-			System.out.print("년도를 입력하세요.\nYEAR>");
+			System.out.print("년도를 입력하세요.\nYEAR> ");
 			int year = scanner.nextInt();
-			System.out.println("달을 입력하세요.\nMONTH>");
+			System.out.print("달을 입력하세요.\nMONTH> ");
 			int month = scanner.nextInt();
-			System.out.println("첫번째 요일을 입력하세요. (SU MO TU WE TH FR SA).\nWEEKDAY>");
+			System.out.print("첫번째 요일을 입력하세요. (SU MO TU WE TH FR SA).\nWEEKDAY> ");
 			String firstday = scanner.next();
 			cal.print(year, month, firstday);
 			if ((month < 1) || (month > 12)) {
@@ -80,3 +80,4 @@ public class VraiCal {
 }
 // 문자열 비교할 때 == 와 (문자열.equals(문자열)) 은 완전히 다르다
 // 엥간하면 입력은 메인메서드에서 받고, 입력값을 가지고 다른 메서드로부터 결과를 받는게 편한듯?
+// 메인 메서드에서 위에 빌려온 메서드로 보내주는 키는 : F3
