@@ -3,12 +3,18 @@ package nono.calendar;
 import java.util.Scanner;
 
 public class VraiVraiCal {
-	private static String[] days = { "SU", "MO", "TU", "WE", "TH", "FR", "SA" };
+
 	public static VraiVraiCal vcal = new VraiVraiCal();
 
+	public String getDays(int order) {
+		String[] days = { "SU", "MO", "TU", "WE", "TH", "FR", "SA" };
+		String day = days[order];
+		return day;
+	}
+
 	public String getfirstday(int year, int month) {
-		String firstday = days[5];
-		firstday = days[(5 + vcal.getDategap(year, month)) % 7];
+		String firstday = getDays(5);
+		firstday = getDays((5 + vcal.getDategap(year, month)) % 7);
 		return firstday;
 	}
 
@@ -58,8 +64,8 @@ public class VraiVraiCal {
 	}
 
 	public void blank(String firstday) {
-		for (int i = 0; i < days.length; i++) {
-			if (firstday.equals(days[i])) {
+		for (int i = 0; i < 7; i++) {
+			if (firstday.equals(getDays(i))) {
 				System.out.print("   ".repeat(i));
 			}
 		}
@@ -73,9 +79,9 @@ public class VraiVraiCal {
 	}
 
 	public void locate(String firstday, int times) {
-		for (int i = 0; i < days.length; i++) {
-			if (firstday.equals(days[i])) {
-				if (times % 7 == 7 - i) {
+		for (int i = 0; i < 7; i++) {
+			if (firstday.equals(getDays(i))) {
+				if (times % 7 == (7 - i)%7) {
 					System.out.print("\n");
 				}
 			}

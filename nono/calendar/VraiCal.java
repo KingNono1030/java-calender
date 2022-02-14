@@ -26,7 +26,7 @@ public class VraiCal {
 	public void locate(String firstday, int times) {
 		for (int i = 0; i < days.length; i++) {
 			if (firstday.equals(days[i])) {
-				if (times % 7 == 7 - i) {
+				if (times % 7 == (7 - i)%7) {
 					System.out.print("\n");
 				}
 			}
